@@ -10,21 +10,13 @@ use App\Models\User;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// // Auth::routes();
-
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::post('/sendMessage', [MessageController::class, 'index'])->name('message');
+Route::post('/send-message', [MessageController::class, 'index'])->name('message');
+Route::post('/send-group-message', [MessageController::class, 'sendGroupMessage'])->name('group-message');
+Route::post('/create-group', [MessageController::class, 'createGroup'])->name('create-group');
+Route::post('/add-member', [MessageController::class, 'addMember'])->name('add-member');
 Route::post('/upload', [MessageController::class, 'upload'])->name('upload-file');
 
 Route::get('/video-chat', function () {
@@ -37,4 +29,3 @@ Route::get('/video-chat', function () {
 Route::post('/video/call-user', 'App\Http\Controllers\VideoChatController@callUser');
 Route::post('/video/accept-call', 'App\Http\Controllers\VideoChatController@acceptCall');
 Auth::routes();
-// Route::get('/home', [HomeController::class, 'home'])->name('home');

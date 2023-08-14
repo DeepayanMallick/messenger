@@ -20113,7 +20113,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     },
     sendMessage: function sendMessage() {
       if (this.messageElement !== '') {
-        axios.post('/sendMessage', {
+        axios.post('/send-message', {
           message: this.messageElement,
           fromUserID: this.authuserid,
           toUserID: this.selectedUserID
