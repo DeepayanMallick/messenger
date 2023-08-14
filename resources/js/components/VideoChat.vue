@@ -442,7 +442,7 @@ export default {
     sendMessage() {
       if (this.messageElement !== '') {
         axios
-          .post('/sendMessage', {
+          .post('/send-message', {
             message: this.messageElement,
             fromUserID: this.authuserid,
             toUserID: this.selectedUserID,
@@ -473,7 +473,7 @@ export default {
           })
           .then((response) => {
             axios
-              .post('/sendMessage', {
+              .post('/send-message', {
                 message: `<a target="_blank" href="${response.data.url}"><img width="100" src="/storage/uploads/free-thumb.png"></a><br><span>${response.data.message}</span>`,
                 fromUserID: this.authUserId,
                 toUserID: this.toUserID,

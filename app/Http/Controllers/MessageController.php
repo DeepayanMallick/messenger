@@ -5,18 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\MessageHistory;
 use Illuminate\Http\Request;
 use App\Events\Chat;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Log;
+use App\Models\GroupConversation;
+use App\Models\GroupMember;
+use App\Models\GroupMessage;
 
 class MessageController extends Controller
 {
-    public function index(Request $request)
-    {    
+    public function sendMessage(Request $request)
+    {
         if (!auth()) {
             return;
         }
-        Log::info($request->input('fromUserID'));
-        Log::info($request->input('toUserID'));
 
         $messageHistory = MessageHistory::create([
             'from_user' => auth()->id(),
@@ -29,7 +28,68 @@ class MessageController extends Controller
         return true;
     }
 
-    public function upload(Request $request){
+
+    public function sendGroupMessage(Request $request)
+    {
+        if (!auth()) {
+            return;
+        }
+
+        $groupConversation = GroupConversation::create([
+            'group_id' => $request->input('groupID'),
+            'member_id' => $request->input('memberID'),
+            'message' => $request->input('message'),
+        ]);
+
+        event(new Chat($request->input('fromUserID'), $request->input('message')));
+
+        return true;
+    }
+
+    public function createGroup(Request $request)
+    {
+        if (!auth()) {
+            return;
+        }
+
+        $groupMessage = GroupMessage::create([
+            'group_name' => $request->input('groupName'),
+        ]);
+
+        event(new Chat($request->input('fromUserID'), $request->input('message')));
+
+        return true;
+    }
+
+    public function addMember(Request $request)
+    {
+        if (!auth()) {
+            return;
+        }
+
+        $groupID = $request->input('group_id');
+        $members = $request->input('groupMembers');
+
+        $groupMembersData = [];
+        foreach ($members as $member) {
+            $groupMembersData[] = [
+                'group_id' => $groupID,
+                'member_id' => $member,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
+        }
+
+        GroupMember::insert($groupMembersData);
+
+
+        event(new Chat($request->input('fromUserID'), $request->input('message')));
+
+        return true;
+    }
+
+    public function upload(Request $request)
+    {
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $fileName = time() . '_' . str_replace(" ", "", $file->getClientOriginalName());

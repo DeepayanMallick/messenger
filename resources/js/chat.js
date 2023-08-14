@@ -13,7 +13,7 @@ if(formElement != undefined && formElement != null) {
 		if(messageElement.value != "") {
 			axios({
 				method: 'post',
-				url: '/sendMessage',
+				url: '/send-message',
 				data: {
 					message: messageElement.value,
 					fromUserID: fromUserID,
@@ -58,7 +58,7 @@ if(uploadButton != undefined && uploadButton != null){
 				console.log(response);
 				axios({
 					method: 'post',
-					url: '/sendMessage',
+					url: '/send-message',
 					data: {
 						message: '<a target="_blank" href="'+response.data.url+'"><img width="100" src="/storage/uploads/free-thumb.png"></a><br><span>'+response.data.message+'</span>',
 						fromUserID: fromUserID,
