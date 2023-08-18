@@ -11,18 +11,18 @@ class GroupMember extends Model
 
     protected $fillable = [
         'group_id',
-        'member_id',
+        'user_id',
         'created_at',
         'updated_at',
     ];
 
     public function group()
     {
-        return $this->belongsTo(GroupMessage::class, 'group_id');
+        return $this->belongsTo(Group::class, 'id');
     }
 
     public function member()
     {
-        return $this->belongsTo(User::class, 'member_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

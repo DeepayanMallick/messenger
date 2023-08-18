@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GroupMessage extends Model
+class Group extends Model
 {
     use HasFactory;
 
@@ -20,6 +20,6 @@ class GroupMessage extends Model
 
     public function members()
     {
-        return $this->belongsToMany(User::class, 'group_members', 'group_id', 'member_id');
+        return $this->belongsToMany(User::class, 'group_members', 'group_id', 'user_id');
     }
 }
