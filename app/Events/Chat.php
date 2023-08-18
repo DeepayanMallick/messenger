@@ -12,22 +12,17 @@ use Illuminate\Queue\SerializesModels;
 
 class Chat implements ShouldBroadcast
 {
-    public $userName = '';
-    public $message = '';
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
- 
-    public function __construct($userName, $message)
+    public $messageHistory = '';
+    public function __construct($messageHistory)
     {
-        $this->userName = $userName;
-        $this->message = $message;
+        $this->messageHistory = $messageHistory;
     }
-
 
     public function broadcastOn(): array
     {
         return [
-            new Channel('laravelChat'),
+            new PrivateChannel('laravelChat'),
         ];
     }
     public function broadcastAs(): string

@@ -19820,6 +19820,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var simple_peer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! simple-peer */ "./node_modules/simple-peer/index.js");
 /* harmony import */ var simple_peer__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(simple_peer__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers */ "./resources/js/helpers.js");
+/* harmony import */ var _emojis_data_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./emojis-data.json */ "./resources/js/components/emojis-data.json");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return { value: void 0, done: !0 }; } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable || "" === iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } throw new TypeError(_typeof(iterable) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -19831,24 +19832,26 @@ function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _ty
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ["allusers", "ccccc", "turn_url", "authUserId", "turn_username", "turn_credential", "selectedUserID", "selectedUserName", "chatWithName"],
+  props: ["allusers", "ccccc", "turn_url", "authuserid", "turn_username", "turn_credential", "fromusername"],
   data: function data() {
     return {
       messageElement: '',
+      messageOutput: '',
       message: '',
       fromUserID: null,
       // Set your fromUserID
-      authUserId: this.authUserId,
+      authUserId: this.authuserid,
       // Set your fromUserID
       toUserID: null,
       // Set your toUserID
       isFocusMyself: true,
       callPlaced: false,
       callPartner: null,
-      selectedUserID: 1,
+      selectedUserID: null,
       selectedUserName: "",
-      chatWithName: "",
+      fromUserName: this.fromusername,
       mutedAudio: false,
       mutedVideo: false,
       videoCallParams: {
@@ -19861,20 +19864,33 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         channel: null,
         peer1: null,
         peer2: null
-      }
+      },
+      isEmojiPickerOpen: false,
+      inputContent: '',
+      show_arrow: true,
+      data: _emojis_data_json__WEBPACK_IMPORTED_MODULE_2__,
+      inputHasFocus: false
     };
   },
   mounted: function mounted() {
     this.initializeChannel(); // this initializes laravel echo
     this.initializeCallListeners(); // subscribes to video presence channel and listens to video events
+    this.privateMsgEvent();
   },
-
   computed: {
     incomingCallDialog: function incomingCallDialog() {
       if (this.videoCallParams.receivingCall && this.videoCallParams.caller !== this.authuserid) {
         return true;
       }
       return false;
+    },
+    categories: function categories() {
+      return Object.keys(_emojis_data_json__WEBPACK_IMPORTED_MODULE_2__);
+    },
+    category_emojis: function category_emojis() {
+      return function (category) {
+        return Object.values(_emojis_data_json__WEBPACK_IMPORTED_MODULE_2__[category]);
+      };
     },
     callerDetails: function callerDetails() {
       var _this = this;
@@ -19894,36 +19910,96 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
     initializeChannel: function initializeChannel() {
       this.videoCallParams.channel = window.Echo.join("presence-video-channel");
     },
-    getMediaPermission: function getMediaPermission() {
+    toggleEmojiPicker: function toggleEmojiPicker() {
+      this.inputHasFocus = true;
+      this.isEmojiPickerOpen = !this.isEmojiPickerOpen;
+      if (this.isEmojiPickerOpen) {
+        this.setupClickOutsideListener();
+      } else {
+        this.removeClickOutsideListener();
+      }
+    },
+    handleEmojiClick: function handleEmojiClick(emoji) {
+      if (this.inputHasFocus) {
+        var inputField = this.$refs.inputField;
+        var startPos = inputField.selectionStart;
+        var endPos = inputField.selectionEnd;
+        this.inputContent = this.inputContent.substring(0, startPos) + emoji + this.inputContent.substring(endPos);
+        var newCursorPosition = startPos + emoji.length;
+        this.$nextTick(function () {
+          inputField.setSelectionRange(newCursorPosition, newCursorPosition);
+          inputField.focus();
+        });
+      } else {
+        this.inputContent += emoji;
+      }
+    },
+    handleInputFocus: function handleInputFocus() {
+      this.inputHasFocus = true;
+    },
+    handleInputBlur: function handleInputBlur() {
+      this.inputHasFocus = false;
+    },
+    setupClickOutsideListener: function setupClickOutsideListener() {
+      console.log('Click Inside');
+      document.addEventListener('click', this.clickOutsideHandler);
+    },
+    removeClickOutsideListener: function removeClickOutsideListener() {
+      console.log('Click Outside');
+      document.removeEventListener('click', this.clickOutsideHandler);
+    },
+    clickOutsideHandler: function clickOutsideHandler(event) {
+      var emojiPicker = this.$refs.emojiPicker;
+      console.log(emojiPicker);
+      if (emojiPicker && !emojiPicker.contains(event.target)) {
+        this.isEmojiPickerOpen = false;
+        this.removeClickOutsideListener();
+      } else {
+        console.log('Not working ...');
+      }
+    },
+    privateMsgEvent: function privateMsgEvent() {
       var _this2 = this;
+      window.Echo.channel("private-laravelChat").listen(".chatting", function (res) {
+        if (res !== undefined && res != null) {
+          var html = "";
+          res.messageHistory.forEach(function (itm) {
+            html += '<div class="MsgWrap"><div class="Profile"><i class="fa fa-user"></i><span class="online"></span></div><div class="TextMsg"><h3>' + itm.from_user_details + ' <span>' + itm.message_time + '</span></h3><p>' + itm.message + '</p></div></div>';
+          });
+          _this2.messageOutput = html;
+        }
+      });
+    },
+    getMediaPermission: function getMediaPermission() {
+      var _this3 = this;
       return (0,_helpers__WEBPACK_IMPORTED_MODULE_1__.getPermissions)().then(function (stream) {
-        _this2.videoCallParams.stream = stream;
-        if (_this2.$refs.userVideo) {
-          _this2.$refs.userVideo.srcObject = stream;
+        _this3.videoCallParams.stream = stream;
+        if (_this3.$refs.userVideo) {
+          _this3.$refs.userVideo.srcObject = stream;
         }
       })["catch"](function (error) {
         console.log(error);
       });
     },
     initializeCallListeners: function initializeCallListeners() {
-      var _this3 = this;
+      var _this4 = this;
       this.videoCallParams.channel.here(function (users) {
-        _this3.videoCallParams.users = users;
+        _this4.videoCallParams.users = users;
       });
       this.videoCallParams.channel.joining(function (user) {
         // check user availability
-        var joiningUserIndex = _this3.videoCallParams.users.findIndex(function (data) {
+        var joiningUserIndex = _this4.videoCallParams.users.findIndex(function (data) {
           return data.id === user.id;
         });
         if (joiningUserIndex < 0) {
-          _this3.videoCallParams.users.push(user);
+          _this4.videoCallParams.users.push(user);
         }
       });
       this.videoCallParams.channel.leaving(function (user) {
-        var leavingUserIndex = _this3.videoCallParams.users.findIndex(function (data) {
+        var leavingUserIndex = _this4.videoCallParams.users.findIndex(function (data) {
           return data.id === user.id;
         });
-        _this3.videoCallParams.users.splice(leavingUserIndex, 1);
+        _this4.videoCallParams.users.splice(leavingUserIndex, 1);
       });
       // listen to incomming call
       this.videoCallParams.channel.listen("StartVideoChat", function (_ref) {
@@ -19933,77 +20009,88 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
           var updatedSignal = _objectSpread(_objectSpread({}, data.signalData), {}, {
             sdp: "".concat(data.signalData.sdp, "\n")
           });
-          _this3.videoCallParams.receivingCall = true;
-          _this3.videoCallParams.caller = data.from;
-          _this3.videoCallParams.callerSignal = updatedSignal;
+          _this4.videoCallParams.receivingCall = true;
+          _this4.videoCallParams.caller = data.from;
+          _this4.videoCallParams.callerSignal = updatedSignal;
         }
       });
     },
     placeUserClick: function placeUserClick(id, name) {
+      var _this5 = this;
       this.selectedUserID = id;
       this.selectedUserName = name;
-      this.chatWithName = name;
+      axios.get("/msg-history/" + this.authUserId + "/" + id, {}).then(function (res) {
+        if (res.data.data !== undefined && res.data.data != null) {
+          var html = "";
+          res.data.data.forEach(function (itm) {
+            html += '<div class="MsgWrap"><div class="Profile"><i class="fa fa-user"></i><span class="online"></span></div><div class="TextMsg"><h3>' + itm.from_user_details + ' <span>' + itm.message_time + '</span></h3><p>' + itm.message + '</p></div></div>';
+          });
+          _this5.messageOutput = html;
+        }
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
     placeVideoCall: function placeVideoCall(id, name) {
-      var _this4 = this;
+      var _this6 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              _this4.callPlaced = true;
-              _this4.callPartner = name;
+              _this6.callPlaced = true;
+              _this6.callPartner = name;
               _context.next = 4;
-              return _this4.getMediaPermission();
+              return _this6.getMediaPermission();
             case 4:
-              _this4.videoCallParams.peer1 = new (simple_peer__WEBPACK_IMPORTED_MODULE_0___default())({
+              _this6.videoCallParams.peer1 = new (simple_peer__WEBPACK_IMPORTED_MODULE_0___default())({
                 initiator: true,
                 trickle: false,
-                stream: _this4.videoCallParams.stream,
+                stream: _this6.videoCallParams.stream,
                 config: {
                   iceServers: [{
-                    urls: _this4.turn_url,
-                    username: _this4.turn_username,
-                    credential: _this4.turn_credential
+                    urls: _this6.turn_url,
+                    username: _this6.turn_username,
+                    credential: _this6.turn_credential
                   }]
                 }
               });
-              _this4.videoCallParams.peer1.on("signal", function (data) {
+              _this6.videoCallParams.peer1.on("signal", function (data) {
                 // send user call signal
                 axios.post("/video/call-user", {
                   user_to_call: id,
                   signal_data: data,
-                  from: _this4.authuserid
+                  from: _this6.authuserid
                 }).then(function () {})["catch"](function (error) {
                   console.log(error);
                 });
               });
-              _this4.videoCallParams.peer1.on("stream", function (stream) {
+              _this6.videoCallParams.peer1.on("stream", function (stream) {
                 console.log("call streaming");
-                if (_this4.$refs.partnerVideo) {
-                  _this4.$refs.partnerVideo.srcObject = stream;
+                if (_this6.$refs.partnerVideo) {
+                  _this6.$refs.partnerVideo.srcObject = stream;
                 }
               });
-              _this4.videoCallParams.peer1.on("connect", function () {
+              _this6.videoCallParams.peer1.on("connect", function () {
                 console.log("peer connected");
               });
-              _this4.videoCallParams.peer1.on("error", function (err) {
+              _this6.videoCallParams.peer1.on("error", function (err) {
                 console.log(err);
               });
-              _this4.videoCallParams.peer1.on("close", function () {
+              _this6.videoCallParams.peer1.on("close", function () {
                 console.log("call closed caller");
               });
-              _this4.videoCallParams.channel.listen("StartVideoChat", function (_ref2) {
+              _this6.videoCallParams.channel.listen("StartVideoChat", function (_ref2) {
                 var data = _ref2.data;
                 if (data.type === "callAccepted") {
                   if (data.signal.renegotiate) {
                     console.log("renegotating");
                   }
                   if (data.signal.sdp) {
-                    _this4.videoCallParams.callAccepted = true;
+                    _this6.videoCallParams.callAccepted = true;
                     var updatedSignal = _objectSpread(_objectSpread({}, data.signal), {}, {
                       sdp: "".concat(data.signal.sdp, "\n")
                     });
-                    _this4.videoCallParams.peer1.signal(updatedSignal);
+                    _this6.videoCallParams.peer1.signal(updatedSignal);
                   }
                 }
               });
@@ -20014,53 +20101,69 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         }, _callee);
       }))();
     },
+    listenForNewMessages: function listenForNewMessages() {
+      var _this7 = this;
+      window.Echo.channel('private-laravelChat').listen('.chatting', function (res) {
+        var userName = 'anonymous';
+        if (res.userName != null && res.userName != '') {
+          userName = res.userName;
+        }
+        var message = {
+          id: Date.now(),
+          // Use a unique identifier for the key
+          username: userName,
+          message: window.emoji.replace_colons(res.message)
+        };
+        _this7.messages.push(message);
+      });
+    },
     acceptCall: function acceptCall() {
-      var _this5 = this;
+      var _this8 = this;
       return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
-              _this5.callPlaced = true;
-              _this5.videoCallParams.callAccepted = true;
+              _this8.callPlaced = true;
+              _this8.videoCallParams.callAccepted = true;
               _context2.next = 4;
-              return _this5.getMediaPermission();
+              return _this8.getMediaPermission();
             case 4:
-              _this5.videoCallParams.peer2 = new (simple_peer__WEBPACK_IMPORTED_MODULE_0___default())({
+              _this8.videoCallParams.peer2 = new (simple_peer__WEBPACK_IMPORTED_MODULE_0___default())({
                 initiator: false,
                 trickle: false,
-                stream: _this5.videoCallParams.stream,
+                stream: _this8.videoCallParams.stream,
                 config: {
                   iceServers: [{
-                    urls: _this5.turn_url,
-                    username: _this5.turn_username,
-                    credential: _this5.turn_credential
+                    urls: _this8.turn_url,
+                    username: _this8.turn_username,
+                    credential: _this8.turn_credential
                   }]
                 }
               });
-              _this5.videoCallParams.receivingCall = false;
-              _this5.videoCallParams.peer2.on("signal", function (data) {
+              _this8.videoCallParams.receivingCall = false;
+              _this8.videoCallParams.peer2.on("signal", function (data) {
                 axios.post("/video/accept-call", {
                   signal: data,
-                  to: _this5.videoCallParams.caller
+                  to: _this8.videoCallParams.caller
                 }).then(function () {})["catch"](function (error) {
                   console.log(error);
                 });
               });
-              _this5.videoCallParams.peer2.on("stream", function (stream) {
-                _this5.videoCallParams.callAccepted = true;
-                _this5.$refs.partnerVideo.srcObject = stream;
+              _this8.videoCallParams.peer2.on("stream", function (stream) {
+                _this8.videoCallParams.callAccepted = true;
+                _this8.$refs.partnerVideo.srcObject = stream;
               });
-              _this5.videoCallParams.peer2.on("connect", function () {
+              _this8.videoCallParams.peer2.on("connect", function () {
                 console.log("peer connected");
-                _this5.videoCallParams.callAccepted = true;
+                _this8.videoCallParams.callAccepted = true;
               });
-              _this5.videoCallParams.peer2.on("error", function (err) {
+              _this8.videoCallParams.peer2.on("error", function (err) {
                 console.log(err);
               });
-              _this5.videoCallParams.peer2.on("close", function () {
+              _this8.videoCallParams.peer2.on("close", function () {
                 console.log("call closed accepter");
               });
-              _this5.videoCallParams.peer2.signal(_this5.videoCallParams.callerSignal);
+              _this8.videoCallParams.peer2.signal(_this8.videoCallParams.callerSignal);
             case 12:
             case "end":
               return _context2.stop();
@@ -20078,9 +20181,11 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         return data.id === id;
       });
       if (onlineUserIndex < 0) {
-        return "Offline";
+        //return "Offline";
+        return "<span style='color: gray;'>Offline</span>";
       }
-      return "Online";
+      //return "Online";
+      return "<span style='color: green;'>Online</span>";
     },
     declineCall: function declineCall() {
       this.videoCallParams.receivingCall = false;
@@ -20103,6 +20208,27 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
         this.mutedVideo = true;
       }
     },
+    dateFormat: function dateFormat(date) {
+      //get hours, minutes, and seconds
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var seconds = date.getSeconds();
+
+      // convert hours to 12-hour format
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+
+      // add leading zeros to minutes and seconds
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+
+      // add am/pm suffix
+      var amPm = hours >= 12 ? 'PM' : 'AM';
+
+      // combine all parts into a time string
+      var timeString = hours + ':' + minutes + ':' + seconds + ' ' + amPm;
+      return timeString;
+    },
     stopStreamedVideo: function stopStreamedVideo(videoElem) {
       var stream = videoElem.srcObject;
       var tracks = stream.getTracks();
@@ -20112,21 +20238,28 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       videoElem.srcObject = null;
     },
     sendMessage: function sendMessage() {
-      if (this.messageElement !== '') {
+      var _this9 = this;
+      if (this.inputContent !== '' && this.selectedUserID != '') {
         axios.post('/send-message', {
-          message: this.messageElement,
+          message: this.inputContent,
           fromUserID: this.authuserid,
           toUserID: this.selectedUserID
-        }).then(function () {
-          // Listen for new chat messages using Echo or your preferred method
+        }).then(function (res) {
+          console.log("res", res);
+          if (res.config.data !== undefined && res.config.data != null) {
+            var msgs = JSON.parse(res.config.data);
+            var html = "";
+            html += '<div class="MsgWrap"><div class="Profile"><i class="fa fa-user"></i><span class="online"></span></div><div class="TextMsg"><h3>' + _this9.fromUserName + ' <span>' + _this9.dateFormat(new Date()) + '</span></h3><p>' + msgs.message + '</p></div></div>';
+            _this9.messageOutput += html;
+          }
         })["catch"](function (error) {
           console.error(error);
         });
-        this.messageElement = '';
+        this.inputContent = '';
       }
     },
     uploadFile: function uploadFile() {
-      var _this6 = this;
+      var _this10 = this;
       var file = this.$refs.fileInput.files[0];
       if (file) {
         var formData = new FormData();
@@ -20137,18 +20270,25 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
             'X-CSRF-TOKEN': csrfToken
           }
         }).then(function (response) {
-          axios.post('/sendMessage', {
+          axios.post('/send-message', {
             message: "<a target=\"_blank\" href=\"".concat(response.data.url, "\"><img width=\"100\" src=\"/storage/uploads/free-thumb.png\"></a><br><span>").concat(response.data.message, "</span>"),
-            fromUserID: _this6.authUserId,
-            toUserID: _this6.toUserID
-          }).then(function () {
+            fromUserID: _this10.authuserid,
+            toUserID: _this10.selectedUserID
+          }).then(function (res) {
+            console.log("res", res);
+            if (res.config.data !== undefined && res.config.data != null) {
+              var msgs = JSON.parse(res.config.data);
+              var html = "";
+              html += '<div class="MsgWrap"><div class="Profile"><i class="fa fa-user"></i><span class="online"></span></div><div class="TextMsg"><h3>' + _this10.fromUserName + ' <span>' + _this10.dateFormat(new Date()) + '</span></h3><p>' + msgs.message + '</p></div></div>';
+              _this10.messageOutput += html;
+            }
             // Listen for new chat messages using Echo or your preferred method
           })["catch"](function (error) {
             console.error(error);
           });
-          _this6.message = '';
+          _this10.message = '';
         })["catch"](function (error) {
-          _this6.message = 'Error uploading file.';
+          _this10.message = 'Error uploading file.';
           console.error(error);
         });
       } else {
@@ -20156,7 +20296,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       }
     },
     endCall: function endCall() {
-      var _this7 = this;
+      var _this11 = this;
       // if video or audio is muted, enable it so that the stopStreamedVideo method will work
       if (!this.mutedVideo) this.toggleMuteVideo();
       if (!this.mutedAudio) this.toggleMuteAudio();
@@ -20168,7 +20308,7 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
       }
       this.videoCallParams.channel.pusher.channels.channels["presence-presence-video-channel"].disconnect();
       setTimeout(function () {
-        _this7.callPlaced = false;
+        _this11.callPlaced = false;
       }, 3000);
     }
   }
@@ -20193,112 +20333,161 @@ var _withScopeId = function _withScopeId(n) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.pushScopeId)("data-v-737f9f18"), n = n(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.popScopeId)(), n;
 };
 var _hoisted_1 = {
-  "class": "container"
+  "class": "fullwrap"
 };
 var _hoisted_2 = {
-  "class": "row justify-content-center"
+  "class": "Sidebar"
 };
-var _hoisted_3 = {
-  "class": "col-md-4"
-};
+var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "SearchWrap"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "SearchUser"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    action: ""
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+    "class": "fa fa-search"
+  }), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    placeholder: "Search",
+    name: "userprofile",
+    "class": "formcontrol"
+  })])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "moreInfo"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "20px",
+    "aria-hidden": "true",
+    viewBox: "0 0 14 14",
+    role: "img"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+    "fill-rule": "evenodd",
+    d: "M3.52 6.75c0 .966-.789 1.75-1.76 1.75A1.755 1.755 0 010 6.75C0 5.784.788 5 1.76 5c.971 0 1.76.784 1.76 1.75m10.48 0c0 .966-.788 1.75-1.76 1.75a1.755 1.755 0 01-1.759-1.75c0-.966.788-1.75 1.759-1.75.972 0 1.76.784 1.76 1.75m-5.24 0c0 .966-.788 1.75-1.76 1.75a1.755 1.755 0 01-1.76-1.75C5.24 5.784 6.03 5 7 5c.972 0 1.76.784 1.76 1.75"
+  })])])], -1 /* HOISTED */);
+});
 var _hoisted_4 = {
-  "class": "container"
+  "class": "ProfileWrap"
 };
-var _hoisted_5 = {
-  "class": "row"
+var _hoisted_5 = ["onClick"];
+var _hoisted_6 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+    "class": "fa fa-user"
+  }, null, -1 /* HOISTED */);
+});
+var _hoisted_7 = ["innerHTML"];
+var _hoisted_8 = {
+  "class": "ContentArea"
 };
-var _hoisted_6 = {
-  "class": ""
-};
-var _hoisted_7 = {
-  "class": "",
-  role: ""
-};
-var _hoisted_8 = ["onClick"];
 var _hoisted_9 = {
-  "class": "badge badge-light"
+  "class": "ChatHeader"
 };
-var _hoisted_10 = {
-  "class": "row mt-5",
-  id: "video-row"
-};
-var _hoisted_11 = {
-  key: 0,
-  "class": "col-12 video-container"
-};
-var _hoisted_12 = {
-  key: 1,
-  "class": "partner-video"
-};
-var _hoisted_13 = {
-  key: 0,
-  "class": "column items-center q-pt-xl"
-};
+var _hoisted_10 = ["innerHTML"];
+var _hoisted_11 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+    "class": "fa fa-video"
+  }, null, -1 /* HOISTED */);
+});
+var _hoisted_12 = [_hoisted_11];
+var _hoisted_13 = ["innerHTML"];
 var _hoisted_14 = {
-  "class": "col q-gutter-y-md text-center"
+  key: 0,
+  "class": "ChatFooter"
 };
 var _hoisted_15 = {
-  "class": "q-pt-md"
-};
-var _hoisted_16 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "calling...", -1 /* HOISTED */);
-});
-var _hoisted_17 = {
-  "class": "action-btns"
-};
-var _hoisted_18 = {
-  key: 0,
-  "class": "row"
-};
-var _hoisted_19 = {
-  "class": "col"
-};
-var _hoisted_20 = {
-  "class": "btn-group",
-  role: "group"
-};
-var _hoisted_21 = {
-  "class": "col-md-8"
-};
-var _hoisted_22 = {
-  "class": "card"
-};
-var _hoisted_23 = {
-  "class": "card-header"
-};
-var _hoisted_24 = {
-  id: "ChatWithName"
-};
-var _hoisted_25 = {
-  "class": "card-body"
-};
-var _hoisted_26 = {
-  id: "messageOutput"
-};
-var _hoisted_27 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1 /* HOISTED */);
-});
-var _hoisted_28 = {
   "class": "form-group mb-3"
 };
-var _hoisted_29 = /*#__PURE__*/_withScopeId(function () {
-  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    type: "submit"
-  }, "Send", -1 /* HOISTED */);
-});
-var _hoisted_30 = {
+var _hoisted_16 = {
+  "class": "chatFormFooter"
+};
+var _hoisted_17 = {
+  "class": "chatFormFooterLeft"
+};
+var _hoisted_18 = {
   type: "file",
   id: "fileInput",
   ref: "fileInput"
 };
-var _hoisted_31 = /*#__PURE__*/_withScopeId(function () {
+var _hoisted_19 = {
+  "class": "chatFormFooterRight"
+};
+var _hoisted_20 = {
+  ref: "emojiPicker"
+};
+var _hoisted_21 = {
+  key: 0,
+  "class": "emoji_picker",
+  ref: "emojiPicker"
+};
+var _hoisted_22 = {
+  "class": "picker_container"
+};
+var _hoisted_23 = {
+  "class": "emojis_container"
+};
+var _hoisted_24 = ["onClick"];
+var _hoisted_25 = {
+  key: 0,
+  "class": "bottom_arrow"
+};
+var _hoisted_26 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+    "class": "fa fa-smile"
+  }, null, -1 /* HOISTED */);
+});
+var _hoisted_27 = [_hoisted_26];
+var _hoisted_28 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "submit"
+  }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+    "class": "fa fa-paper-plane"
+  })], -1 /* HOISTED */);
+});
+var _hoisted_29 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     id: "message"
   }, null, -1 /* HOISTED */);
 });
-
+var _hoisted_30 = {
+  id: "video-row"
+};
+var _hoisted_31 = {
+  key: 0,
+  "class": "video-container"
+};
+var _hoisted_32 = {
+  key: 1,
+  "class": "partner-video"
+};
+var _hoisted_33 = {
+  key: 0,
+  "class": "column items-center q-pt-xl"
+};
+var _hoisted_34 = {
+  "class": "col q-gutter-y-md text-center"
+};
+var _hoisted_35 = {
+  "class": "q-pt-md"
+};
+var _hoisted_36 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "calling...", -1 /* HOISTED */);
+});
+var _hoisted_37 = {
+  "class": "action-btns"
+};
+var _hoisted_38 = {
+  key: 1,
+  "class": "IncomingCallBox"
+};
+var _hoisted_39 = {
+  "class": "col"
+};
+var _hoisted_40 = {
+  "class": "btn-group",
+  role: "group"
+};
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div id=\"sidebar-layout\" class=\"sidebar-layout\" data-v-737f9f18><div class=\"ProfileWrap\" data-v-737f9f18><div class=\"ProfileImage\" data-v-737f9f18><i class=\"fa fa-user\" data-v-737f9f18></i><span class=\"online\" data-v-737f9f18></span></div><div class=\"ProfileContent\" data-v-737f9f18><h3 data-v-737f9f18>Anika Jonesone</h3><h5 data-v-737f9f18>SaveOnDev</h5><p data-v-737f9f18>9:33 BD (13 h behind)</p><p data-v-737f9f18><i class=\"fa fa-briefcase\" data-v-737f9f18></i> Backend Developer</p></div></div><div class=\"Sidebarmenu\" data-v-737f9f18><ul data-v-737f9f18><li data-v-737f9f18><a href=\"#\" data-v-737f9f18><i class=\"fa fa-search\" data-v-737f9f18></i> Search Messages <i class=\"fa fa-angle-right\" data-v-737f9f18></i></a></li><li data-v-737f9f18><a href=\"#\" data-v-737f9f18><i class=\"fa fa-user\" data-v-737f9f18></i> People <i class=\"fa fa-angle-right\" data-v-737f9f18></i></a></li><li data-v-737f9f18><a href=\"#\" data-v-737f9f18><i class=\"fa fa-link\" data-v-737f9f18></i> Files &amp; Link <i class=\"fa fa-angle-right\" data-v-737f9f18></i></a></li><li data-v-737f9f18><a href=\"#\" data-v-737f9f18><i class=\"fa fa-address-book\" data-v-737f9f18></i> Personal notepad <i class=\"fa fa-angle-right\" data-v-737f9f18></i></a></li></ul></div></div>", 1);
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.allusers, function (user) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.allusers, function (user) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
       type: "button",
       "class": "mr-2",
@@ -20307,14 +20496,68 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: function onClick($event) {
         return $options.placeUserClick(user.id, user.name);
       }
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.name) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getUserOnlineStatus(user.id)), 1 /* TEXT */)], 8 /* PROPS */, _hoisted_8);
-  }), 128 /* KEYED_FRAGMENT */))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Placing Video Call"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [$data.callPlaced ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("video", {
+    }, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.name) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <span class=\"badge badge-success\">\n                    {{\n                        getUserOnlineStatus(user.id)\n                    }}\n                    </span> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+      "class": "badge",
+      innerHTML: $options.getUserOnlineStatus(user.id)
+    }, null, 8 /* PROPS */, _hoisted_7)], 8 /* PROPS */, _hoisted_5);
+  }), 128 /* KEYED_FRAGMENT */))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    innerHTML: $data.selectedUserName
+  }, null, 8 /* PROPS */, _hoisted_10), $data.selectedUserID ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 0,
+    id: "callButton",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      $options.placeVideoCall($data.selectedUserID, $data.selectedUserName);
+    })
+  }, _hoisted_12)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    innerHTML: $data.messageOutput,
+    id: "messageOutput"
+  }, null, 8 /* PROPS */, _hoisted_13), $data.selectedUserID ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    id: "chatForm",
+    onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.sendMessage && $options.sendMessage.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.inputContent = $event;
+    }),
+    "class": "WriteMsg",
+    ref: "inputField",
+    onFocus: _cache[2] || (_cache[2] = function () {
+      return $options.handleInputFocus && $options.handleInputFocus.apply($options, arguments);
+    }),
+    onBlur: _cache[3] || (_cache[3] = function () {
+      return $options.handleInputBlur && $options.handleInputBlur.apply($options, arguments);
+    }),
+    placeholder: "Write a message ..."
+  }, null, 544 /* HYDRATE_EVENTS, NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.inputContent]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", _hoisted_18, null, 512 /* NEED_PATCH */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    id: "uploadButton",
+    "class": "btn btn-primary",
+    onClick: _cache[4] || (_cache[4] = function () {
+      return $options.uploadFile && $options.uploadFile.apply($options, arguments);
+    })
+  }, "Upload")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [$data.isEmojiPickerOpen ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.categories, function (category) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+      "class": "category",
+      key: "category_".concat(category)
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($options.category_emojis(category), function (emoji, index) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+        onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+          return $options.handleEmojiClick(emoji);
+        }, ["prevent"]),
+        key: "emoji_".concat(index)
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(emoji), 9 /* TEXT, PROPS */, _hoisted_24);
+    }), 128 /* KEYED_FRAGMENT */))])]);
+  }), 128 /* KEYED_FRAGMENT */))]), $data.show_arrow ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_25)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 512 /* NEED_PATCH */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    onClick: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.toggleEmojiPicker && $options.toggleEmojiPicker.apply($options, arguments);
+    }, ["prevent"]))
+  }, _hoisted_27)], 512 /* NEED_PATCH */), _hoisted_28])])], 32 /* HYDRATE_EVENTS */), _hoisted_29])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [$data.callPlaced ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("video", {
     ref: "userVideo",
     muted: "",
     playsinline: "",
     autoplay: "",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer", $data.isFocusMyself === true ? 'user-video' : 'partner-video']),
-    onClick: _cache[0] || (_cache[0] = function () {
+    onClick: _cache[7] || (_cache[7] = function () {
       return $options.toggleCameraArea && $options.toggleCameraArea.apply($options, arguments);
     })
   }, null, 2 /* CLASS */), $data.videoCallParams.callAccepted ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("video", {
@@ -20323,61 +20566,41 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     playsinline: "",
     autoplay: "",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["cursor-pointer", $data.isFocusMyself === true ? 'partner-video' : 'user-video']),
-    onClick: _cache[1] || (_cache[1] = function () {
+    onClick: _cache[8] || (_cache[8] = function () {
       return $options.toggleCameraArea && $options.toggleCameraArea.apply($options, arguments);
     })
-  }, null, 2 /* CLASS */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, [$data.callPartner ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.callPartner), 1 /* TEXT */)]), _hoisted_16])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, null, 2 /* CLASS */)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_32, [$data.callPartner ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.callPartner), 1 /* TEXT */)]), _hoisted_36])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn btn-info",
-    onClick: _cache[2] || (_cache[2] = function () {
+    onClick: _cache[9] || (_cache[9] = function () {
       return $options.toggleMuteAudio && $options.toggleMuteAudio.apply($options, arguments);
     })
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.mutedAudio ? "Unmute" : "Mute"), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn btn-primary mx-4",
-    onClick: _cache[3] || (_cache[3] = function () {
+    onClick: _cache[10] || (_cache[10] = function () {
       return $options.toggleMuteVideo && $options.toggleMuteVideo.apply($options, arguments);
     })
   }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.mutedVideo ? "ShowVideo" : "HideVideo"), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn btn-danger",
-    onClick: _cache[4] || (_cache[4] = function () {
+    onClick: _cache[11] || (_cache[11] = function () {
       return $options.endCall && $options.endCall.apply($options, arguments);
     })
-  }, " EndCall ")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End of Placing Video Call  "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Incoming Call  "), $options.incomingCallDialog ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Incoming Call From "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.callerDetails.name), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  }, " EndCall ")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Incoming Call  "), $options.incomingCallDialog ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Incoming Call From "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.callerDetails.name), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn btn-danger",
     "data-dismiss": "modal",
-    onClick: _cache[5] || (_cache[5] = function () {
+    onClick: _cache[12] || (_cache[12] = function () {
       return $options.declineCall && $options.declineCall.apply($options, arguments);
     })
   }, " Decline "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn btn-success ml-5",
-    onClick: _cache[6] || (_cache[6] = function () {
+    onClick: _cache[13] || (_cache[13] = function () {
       return $options.acceptCall && $options.acceptCall.apply($options, arguments);
     })
-  }, " Accept ")])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End of Incoming Call  ")])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Chat with "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.chatWithName), 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.message), 1 /* TEXT */), _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    id: "chatForm",
-    onSubmit: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-      return $options.sendMessage && $options.sendMessage.apply($options, arguments);
-    }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-      return $data.messageElement = $event;
-    })
-  }, null, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.messageElement]])]), _hoisted_29], 32 /* HYDRATE_EVENTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", _hoisted_30, null, 512 /* NEED_PATCH */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    id: "uploadButton",
-    onClick: _cache[9] || (_cache[9] = function () {
-      return $options.uploadFile && $options.uploadFile.apply($options, arguments);
-    })
-  }, "Upload"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    id: "callButton",
-    onClick: _cache[10] || (_cache[10] = function ($event) {
-      $options.placeVideoCall($data.selectedUserID, $data.selectedUserName);
-    })
-  }, "Video"), _hoisted_31])])])])]);
+  }, " Accept ")])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" End of Incoming Call  ")]), _hoisted_41]);
 }
 
 /***/ }),
@@ -26956,7 +27179,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#video-row[data-v-737f9f18] {\n  width: 700px;\n  max-width: 90vw;\n}\n#incoming-call-card[data-v-737f9f18] {\n  border: 1px solid #0acf83;\n}\n.video-container[data-v-737f9f18] {\n  width: 700px;\n  height: 500px;\n  max-width: 90vw;\n  max-height: 50vh;\n  margin: 0 auto;\n  border: 1px solid #0acf83;\n  position: relative;\n  box-shadow: 1px 1px 11px #9e9e9e;\n  background-color: #fff;\n}\n.video-container .user-video[data-v-737f9f18] {\n  width: 30%;\n  position: absolute;\n  left: 10px;\n  bottom: 10px;\n  border: 1px solid #fff;\n  border-radius: 6px;\n  z-index: 2;\n}\n.video-container .partner-video[data-v-737f9f18] {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  z-index: 1;\n  margin: 0;\n  padding: 0;\n}\n.video-container .action-btns[data-v-737f9f18] {\n  position: absolute;\n  bottom: 20px;\n  left: 50%;\n  margin-left: -50px;\n  z-index: 3;\n  display: flex;\n  flex-direction: row;\n}\n\n/* Mobiel Styles */\n@media only screen and (max-width: 768px) {\n.video-container[data-v-737f9f18] {\n    height: 50vh;\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#video-row[data-v-737f9f18] {\n    width: 700px;\n    max-width: 90vw;\n    position: absolute;\n    top: 0px;\n    right: 0px\n      /* top: 50%;    \n    left: 50%;\n    transform: translate(-50%, -50%); */\n}\n#incoming-call-card[data-v-737f9f18] {\n    border: 1px solid #0acf83;\n}\n.video-container[data-v-737f9f18] {\n    width: 700px;\n    height: 500px;\n    max-width: 90vw;\n    max-height: 50vh;\n    margin: 0 auto;\n    border: 1px solid #0acf83;\n    position: relative;\n    box-shadow: 1px 1px 11px #9e9e9e;\n    background-color: #fff;\n}\n.video-container .user-video[data-v-737f9f18] {\n    width: 30%;\n    position: absolute;\n    left: 10px;\n    bottom: 10px;\n    border: 1px solid #fff;\n    border-radius: 6px;\n    z-index: 2;\n}\n.video-container .partner-video[data-v-737f9f18] {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    left: 0;\n    right: 0;\n    bottom: 0;\n    top: 0;\n    z-index: 1;\n    margin: 0;\n    padding: 0;\n}\n.video-container .action-btns[data-v-737f9f18] {\n    position: absolute;\n    bottom: 20px;\n    left: 50%;\n    margin-left: -50px;\n    z-index: 3;\n    display: flex;\n    flex-direction: row;\n}\n\n  /*\n## Emoji CSS Start\n****************/\n.emoji_picker[data-v-737f9f18] {\n    position: absolute;\n    display: flex;\n    flex-direction: column;\n    width: 20rem;\n    height: 20rem;\n    max-width: 100%;\n    bottom: 55px;\n    right: 0px;\n}\n.emoji_picker[data-v-737f9f18],\n  .bottom_arrow[data-v-737f9f18] {\n    box-shadow: 0 0 5px 1px rgba(0, 0, 0, .0975);\n}\n.emoji_picker[data-v-737f9f18],\n  .picker_container[data-v-737f9f18] {\n    border-radius: 0.5rem;\n    background: white;\n}\n.picker_container[data-v-737f9f18] {\n    position: relative;\n    padding: 1rem;\n    overflow: auto;\n    z-index: 1;\n}\n.category[data-v-737f9f18] {\n    display: flex;\n    flex-direction: column;\n    margin-bottom: 1rem;\n    color: rgb(169, 169, 169);\n}\n.emojis_container[data-v-737f9f18] {\n    display: flex;\n    flex-wrap: wrap;\n}\n.category button[data-v-737f9f18] {\n    margin: 0.5rem;\n    margin-left: 0;\n    background: inherit;\n    border: none;\n    font-size: 1.75rem;\n    padding: 0;\n}\n.bottom_arrow[data-v-737f9f18] {\n    position: absolute;\n    left: 82%;\n    bottom: 0;\n    width: 0.75rem;\n    height: 0.75rem;\n    transform: translate(-82%, 50%) rotate(45deg);\n    background: white;\n}\n\n  /*\n## Emoji CSS End\n****************/\n\n  /* Mobiel Styles */\n@media only screen and (max-width: 768px) {\n.video-container[data-v-737f9f18] {\n      height: 50vh;\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -49417,6 +49640,17 @@ const isThenable = (thing) =>
   isThenable
 });
 
+
+/***/ }),
+
+/***/ "./resources/js/components/emojis-data.json":
+/*!**************************************************!*\
+  !*** ./resources/js/components/emojis-data.json ***!
+  \**************************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = JSON.parse('{"Frequently used":{"thumbs_up":"👍","-1":"👎","sob":"😭","confused":"😕","neutral_face":"😐","blush":"😊","heart_eyes":"😍"},"People":{"smile":"😄","smiley":"😃","grinning":"😀","blush":"😊","wink":"😉","heart_eyes":"😍","kissing_heart":"😘","kissing_closed_eyes":"😚","kissing":"😗","kissing_smiling_eyes":"😙","stuck_out_tongue_winking_eye":"😜","stuck_out_tongue_closed_eyes":"😝","stuck_out_tongue":"😛","flushed":"😳","grin":"😁","pensive":"😔","relieved":"😌","unamused":"😒","disappointed":"😞","persevere":"😣","cry":"😢","joy":"😂","sob":"😭","sleepy":"😪","disappointed_relieved":"😥","cold_sweat":"😰","sweat_smile":"😅","sweat":"😓","weary":"😩","tired_face":"😫","fearful":"😨","scream":"😱","angry":"😠","rage":"😡","triumph":"😤","confounded":"😖","laughing":"😆","yum":"😋","mask":"😷","sunglasses":"😎","sleeping":"😴","dizzy_face":"😵","astonished":"😲","worried":"😟","frowning":"😦","anguished":"😧","imp":"👿","open_mouth":"😮","grimacing":"😬","neutral_face":"😐","confused":"😕","hushed":"😯","smirk":"😏","expressionless":"😑","man_with_gua_pi_mao":"👲","man_with_turban":"👳","cop":"👮","construction_worker":"👷","guardsman":"💂","baby":"👶","boy":"👦","girl":"👧","man":"👨","woman":"👩","older_man":"👴","older_woman":"👵","person_with_blond_hair":"👱","angel":"👼","princess":"👸","smiley_cat":"😺","smile_cat":"😸","heart_eyes_cat":"😻","kissing_cat":"😽","smirk_cat":"😼","scream_cat":"🙀","crying_cat_face":"😿","joy_cat":"😹","pouting_cat":"😾","japanese_ogre":"👹","japanese_goblin":"👺","see_no_evil":"🙈","hear_no_evil":"🙉","speak_no_evil":"🙊","skull":"💀","alien":"👽","hankey":"💩","fire":"🔥","sparkles":"✨","star2":"🌟","dizzy":"💫","boom":"💥","anger":"💢","sweat_drops":"💦","droplet":"💧","zzz":"💤","dash":"💨","ear":"👂","eyes":"👀","nose":"👃","tongue":"👅","lips":"👄","thumbs_up":"👍","-1":"👎","ok_hand":"👌","facepunch":"👊","fist":"✊","wave":"👋","hand":"✋","open_hands":"👐","point_up_2":"👆","point_down":"👇","point_right":"👉","point_left":"👈","raised_hands":"🙌","pray":"🙏","clap":"👏","muscle":"💪","walking":"🚶","runner":"🏃","dancer":"💃","couple":"👫","family":"👪","couplekiss":"💏","couple_with_heart":"💑","dancers":"👯","ok_woman":"🙆","no_good":"🙅","information_desk_person":"💁","raising_hand":"🙋","massage":"💆","haircut":"💇","nail_care":"💅","bride_with_veil":"👰","person_with_pouting_face":"🙎","person_frowning":"🙍","bow":"🙇","tophat":"🎩","crown":"👑","womans_hat":"👒","athletic_shoe":"👟","mans_shoe":"👞","sandal":"👡","high_heel":"👠","boot":"👢","shirt":"👕","necktie":"👔","womans_clothes":"👚","dress":"👗","running_shirt_with_sash":"🎽","jeans":"👖","kimono":"👘","bikini":"👙","briefcase":"💼","handbag":"👜","pouch":"👝","purse":"👛","eyeglasses":"👓","ribbon":"🎀","closed_umbrella":"🌂","lipstick":"💄","yellow_heart":"💛","blue_heart":"💙","purple_heart":"💜","green_heart":"💚","broken_heart":"💔","heartpulse":"💗","heartbeat":"💓","two_hearts":"💕","sparkling_heart":"💖","revolving_hearts":"💞","cupid":"💘","love_letter":"💌","kiss":"💋","ring":"💍","gem":"💎","bust_in_silhouette":"👤","speech_balloon":"💬","footprints":"👣"},"Nature":{"dog":"🐶","wolf":"🐺","cat":"🐱","mouse":"🐭","hamster":"🐹","rabbit":"🐰","frog":"🐸","tiger":"🐯","koala":"🐨","bear":"🐻","pig":"🐷","pig_nose":"🐽","cow":"🐮","boar":"🐗","monkey_face":"🐵","monkey":"🐒","horse":"🐴","sheep":"🐑","elephant":"🐘","panda_face":"🐼","penguin":"🐧","bird":"🐦","baby_chick":"🐤","hatched_chick":"🐥","hatching_chick":"🐣","chicken":"🐔","snake":"🐍","turtle":"🐢","bug":"🐛","bee":"🐝","ant":"🐜","beetle":"🐞","snail":"🐌","octopus":"🐙","shell":"🐚","tropical_fish":"🐠","fish":"🐟","dolphin":"🐬","whale":"🐳","racehorse":"🐎","dragon_face":"🐲","blowfish":"🐡","camel":"🐫","poodle":"🐩","feet":"🐾","bouquet":"💐","cherry_blossom":"🌸","tulip":"🌷","four_leaf_clover":"🍀","rose":"🌹","sunflower":"🌻","hibiscus":"🌺","maple_leaf":"🍁","leaves":"🍃","fallen_leaf":"🍂","herb":"🌿","ear_of_rice":"🌾","mushroom":"🍄","cactus":"🌵","palm_tree":"🌴","chestnut":"🌰","seedling":"🌱","blossom":"🌼","new_moon":"🌑","first_quarter_moon":"🌓","moon":"🌔","full_moon":"🌕","first_quarter_moon_with_face":"🌛","crescent_moon":"🌙","earth_asia":"🌏","volcano":"🌋","milky_way":"🌌","stars":"🌠","partly_sunny":"⛅","snowman":"⛄","cyclone":"🌀","foggy":"🌁","rainbow":"🌈","ocean":"🌊"},"Objects":{"bamboo":"🎍","gift_heart":"💝","dolls":"🎎","school_satchel":"🎒","mortar_board":"🎓","flags":"🎏","fireworks":"🎆","sparkler":"🎇","wind_chime":"🎐","rice_scene":"🎑","jack_o_lantern":"🎃","ghost":"👻","santa":"🎅","christmas_tree":"🎄","gift":"🎁","tanabata_tree":"🎋","tada":"🎉","confetti_ball":"🎊","balloon":"🎈","crossed_flags":"🎌","crystal_ball":"🔮","movie_camera":"🎥","camera":"📷","video_camera":"📹","vhs":"📼","cd":"💿","dvd":"📀","minidisc":"💽","floppy_disk":"💾","computer":"💻","iphone":"📱","telephone_receiver":"📞","pager":"📟","fax":"📠","satellite":"📡","tv":"📺","radio":"📻","loud_sound":"🔊","bell":"🔔","loudspeaker":"📢","mega":"📣","hourglass_flowing_sand":"⏳","hourglass":"⌛","alarm_clock":"⏰","watch":"⌚","unlock":"🔓","lock":"🔒","lock_with_ink_pen":"🔏","closed_lock_with_key":"🔐","key":"🔑","mag_right":"🔎","bulb":"💡","flashlight":"🔦","electric_plug":"🔌","battery":"🔋","mag":"🔍","bath":"🛀","toilet":"🚽","wrench":"🔧","nut_and_bolt":"🔩","hammer":"🔨","door":"🚪","smoking":"🚬","bomb":"💣","gun":"🔫","hocho":"🔪","pill":"💊","syringe":"💉","moneybag":"💰","yen":"💴","dollar":"💵","credit_card":"💳","money_with_wings":"💸","calling":"📲","e-mail":"📧","inbox_tray":"📥","outbox_tray":"📤","envelope_with_arrow":"📩","incoming_envelope":"📨","mailbox":"📫","mailbox_closed":"📪","postbox":"📮","package":"📦","memo":"📝","page_facing_up":"📄","page_with_curl":"📃","bookmark_tabs":"📑","bar_chart":"📊","chart_with_upwards_trend":"📈","chart_with_downwards_trend":"📉","scroll":"📜","clipboard":"📋","date":"📅","calendar":"📆","card_index":"📇","file_folder":"📁","open_file_folder":"📂","pushpin":"📌","paperclip":"📎","straight_ruler":"📏","triangular_ruler":"📐","closed_book":"📕","green_book":"📗","blue_book":"📘","orange_book":"📙","notebook":"📓","notebook_with_decorative_cover":"📔","ledger":"📒","books":"📚","book":"📖","bookmark":"🔖","name_badge":"📛","newspaper":"📰","art":"🎨","clapper":"🎬","microphone":"🎤","headphones":"🎧","musical_score":"🎼","musical_note":"🎵","notes":"🎶","musical_keyboard":"🎹","violin":"🎻","trumpet":"🎺","saxophone":"🎷","guitar":"🎸","space_invader":"👾","video_game":"🎮","black_joker":"🃏","flower_playing_cards":"🎴","mahjong":"🀄","game_die":"🎲","dart":"🎯","football":"🏈","basketball":"🏀","soccer":"⚽","baseball":"⚾","tennis":"🎾","8ball":"🎱","bowling":"🎳","golf":"⛳","checkered_flag":"🏁","trophy":"🏆","ski":"🎿","snowboarder":"🏂","swimmer":"🏊","surfer":"🏄","fishing_pole_and_fish":"🎣","tea":"🍵","sake":"🍶","beer":"🍺","beers":"🍻","cocktail":"🍸","tropical_drink":"🍹","wine_glass":"🍷","fork_and_knife":"🍴","pizza":"🍕","hamburger":"🍔","fries":"🍟","poultry_leg":"🍗","meat_on_bone":"🍖","spaghetti":"🍝","curry":"🍛","fried_shrimp":"🍤","bento":"🍱","sushi":"🍣","fish_cake":"🍥","rice_ball":"🍙","rice_cracker":"🍘","rice":"🍚","ramen":"🍜","stew":"🍲","oden":"🍢","dango":"🍡","egg":"🍳","bread":"🍞","doughnut":"🍩","custard":"🍮","icecream":"🍦","ice_cream":"🍨","shaved_ice":"🍧","birthday":"🎂","cake":"🍰","cookie":"🍪","chocolate_bar":"🍫","candy":"🍬","lollipop":"🍭","honey_pot":"🍯","apple":"🍎","green_apple":"🍏","tangerine":"🍊","cherries":"🍒","grapes":"🍇","watermelon":"🍉","strawberry":"🍓","peach":"🍑","melon":"🍈","banana":"🍌","pineapple":"🍍","sweet_potato":"🍠","eggplant":"🍆","tomato":"🍅","corn":"🌽"},"Places":{"house":"🏠","house_with_garden":"🏡","school":"🏫","office":"🏢","post_office":"🏣","hospital":"🏥","bank":"🏦","convenience_store":"🏪","love_hotel":"🏩","hotel":"🏨","wedding":"💒","church":"⛪","department_store":"🏬","city_sunrise":"🌇","city_sunset":"🌆","japanese_castle":"🏯","european_castle":"🏰","tent":"⛺","factory":"🏭","tokyo_tower":"🗼","japan":"🗾","mount_fuji":"🗻","sunrise_over_mountains":"🌄","sunrise":"🌅","night_with_stars":"🌃","statue_of_liberty":"🗽","bridge_at_night":"🌉","carousel_horse":"🎠","ferris_wheel":"🎡","fountain":"⛲","roller_coaster":"🎢","ship":"🚢","boat":"⛵","speedboat":"🚤","rocket":"🚀","seat":"💺","station":"🚉","bullettrain_side":"🚄","bullettrain_front":"🚅","metro":"🚇","railway_car":"🚃","bus":"🚌","blue_car":"🚙","car":"🚗","taxi":"🚕","truck":"🚚","rotating_light":"🚨","police_car":"🚓","fire_engine":"🚒","ambulance":"🚑","bike":"🚲","barber":"💈","busstop":"🚏","ticket":"🎫","traffic_light":"🚥","construction":"🚧","beginner":"🔰","fuelpump":"⛽","izakaya_lantern":"🏮","slot_machine":"🎰","moyai":"🗿","circus_tent":"🎪","performing_arts":"🎭","round_pushpin":"📍","triangular_flag_on_post":"🚩"},"Symbols":{"100":"💯","1234":"🔢","keycap_ten":"🔟","symbols":"🔣","capital_abcd":"🔠","abcd":"🔡","abc":"🔤","arrow_up_small":"🔼","arrow_down_small":"🔽","rewind":"⏪","fast_forward":"⏩","arrow_double_up":"⏫","arrow_double_down":"⏬","ok":"🆗","new":"🆕","up":"🆙","cool":"🆒","free":"🆓","ng":"🆖","signal_strength":"📶","cinema":"🎦","koko":"🈁","u6307":"🈯","u7a7a":"🈳","u6e80":"🈵","u5408":"🈴","u7981":"🈲","ideograph_advantage":"🉐","u5272":"🈹","u55b6":"🈺","u6709":"🈶","u7121":"🈚","restroom":"🚻","mens":"🚹","womens":"🚺","baby_symbol":"🚼","wc":"🚾","no_smoking":"🚭","u7533":"🈸","accept":"🉑","cl":"🆑","sos":"🆘","id":"🆔","no_entry_sign":"🚫","underage":"🔞","no_entry":"⛔","negative_squared_cross_mark":"❎","white_check_mark":"✅","heart_decoration":"💟","vs":"🆚","vibration_mode":"📳","mobile_phone_off":"📴","ab":"🆎","diamond_shape_with_a_dot_inside":"💠","ophiuchus":"⛎","six_pointed_star":"🔯","atm":"🏧","chart":"💹","heavy_dollar_sign":"💲","currency_exchange":"💱","x":"❌","exclamation":"❗","question":"❓","grey_exclamation":"❕","grey_question":"❔","o":"⭕","top":"🔝","end":"🔚","back":"🔙","on":"🔛","soon":"🔜","arrows_clockwise":"🔃","clock12":"🕛","clock1":"🕐","clock2":"🕑","clock3":"🕒","clock4":"🕓","clock5":"🕔","clock6":"🕕","clock7":"🕖","clock8":"🕗","clock9":"🕘","clock10":"🕙","clock11":"🕚","heavy_plus_sign":"➕","heavy_minus_sign":"➖","heavy_division_sign":"➗","white_flower":"💮","radio_button":"🔘","link":"🔗","curly_loop":"➰","trident":"🔱","small_red_triangle":"🔺","black_square_button":"🔲","white_square_button":"🔳","red_circle":"🔴","large_blue_circle":"🔵","small_red_triangle_down":"🔻","white_large_square":"⬜","black_large_square":"⬛","large_orange_diamond":"🔶","large_blue_diamond":"🔷","small_orange_diamond":"🔸","small_blue_diamond":"🔹"}}');
 
 /***/ })
 

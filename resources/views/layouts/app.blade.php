@@ -14,15 +14,17 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     @yield('custom-css')
     <link rel="stylesheet" href="./css/app.css">
     <script>
         @auth
         var fromUserID = `{{ auth()->user()->id }}`;
+        var fromUserName = `{{ auth()->user()->name }}`;
         @else
         var fromUserID = null;
+        var fromUserName = "annonymous";
         @endauth
-        var toUserID = 1;
     </script>
 </head>
 
@@ -81,8 +83,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
-
+        <main class="py-0">
             @yield('content')
         </main>
     </div>

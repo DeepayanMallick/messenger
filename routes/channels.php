@@ -1,5 +1,6 @@
 <?php
 
+use App\Broadcasting\MyPrivateChannel;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -20,3 +21,5 @@ Broadcast::channel('presence-video-channel', function($user) {
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel('laravelChat', MyPrivateChannel::class);

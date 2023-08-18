@@ -1,3 +1,6 @@
+:root{
+	--sidebar-width: 375px; 
+}
 .username{
 	text-transform: uppercase;
 }
@@ -68,9 +71,9 @@
 	-moz-box-orient: vertical;
 	display: inline-block;
 	vertical-align: baseline;
-	*vertical-align: auto;
-	*zoom: 1;
-	*display: inline;
+	vertical-align: auto;
+	zoom: 1;
+	display: inline;
 	width: 1em;
 	height: 1em;
 	background-size: 1em;
@@ -89,7 +92,7 @@ span.emoji-sizer {
 span.emoji-outer {
 	display: -moz-inline-box;
 	display: inline-block;
-	*display: inline;
+	display: inline;
 	height: 1em;
 	width: 1em;
 }
@@ -101,11 +104,344 @@ span.emoji-inner {
 	width: 100%;
 	height: 100%;
 	vertical-align: baseline;
-	*vertical-align: auto;
-	*zoom: 1;
+	vertical-align: auto;
+	zoom: 1;
 }
 
 img.emoji {
 	width: 1em;
 	height: 1em;
 }
+
+.CustomForm{
+	margin-top: 50px;
+}
+
+.CustomForm .formWrap {
+    background-color: #fff;
+    padding: 20px 25px 25px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);	
+}
+
+.CustomForm .formWrap input.form-control, .CustomForm .formWrap .btn{
+	border-radius: 50px;
+	height: 48px;
+}
+
+.CustomForm .formWrap input.form-control {
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    background: #fff;
+	border: none;
+    padding-left: 60px;
+    font-size: 14px;
+}
+
+.CustomForm .formWrap .InputWrap{
+	position: relative;
+}
+
+.CustomForm .formWrap .InputWrap i {
+    position: absolute;
+    top: 50%;
+    transform: translate(10px, -50%);
+    background: #ddd;
+	color: #636363;
+    border-radius: 100%;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    padding: 9px 0;
+}
+
+/* 
+## Custom Css
+**************/
+.navbar{
+	z-index: 9;
+}
+.fullwrap{
+	display: flex;
+	flex-direction: row;
+	position: relative;
+    height: 100%;
+}
+
+.Sidebar{
+	width: var(--sidebar-width);
+	border-right: 1px solid #ccc;
+	height: calc(100vh - 56px);
+}
+
+.SearchWrap {
+    position: relative;
+    border-bottom: 1px solid #ccc;
+    padding: 0 20px; 
+}
+
+.SearchUser{
+	position: relative; 
+}
+
+.SearchUser i {
+    position: absolute;
+    top: 50%;
+    transform: translate(0px, -50%);
+}
+
+.SearchUser input {
+    border: none;
+    width: 100%;
+    height: 48px;
+    padding-left: 30px;
+} 
+
+.SearchUser input:focus{
+	outline: none;
+}
+
+.moreInfo {
+    position: absolute;
+    top: 50%;
+    transform: translate(0px, -50%);
+    right: 20px;
+    z-index: 333;
+    cursor: pointer;
+}
+
+.moreInfo svg{
+	fill : green;
+}
+
+.ProfileWrap button{
+	border: none;
+	width: 100%;
+	text-align: left;
+	padding: 10px 25px;
+	border-bottom: 1px solid #ccc;
+}
+
+.ProfileWrap button i{
+	margin-right: 10px;
+}
+
+.ProfileWrap button .badge{
+	font-size: 11px;
+}
+
+/* 
+## Chat Content 
+******************/
+.ContentArea{
+	width: calc(100% - var(--sidebar-width));
+	position: relative;
+}
+
+.ChatHeader{
+	text-align: right;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 15px;
+}
+
+#callButton{
+	background: none;
+	border: none;
+	padding: 5px 15px;
+}
+
+#messageOutput {
+    padding: 0 25px 25px;
+    position: relative;
+    height: calc(100vh - 210px);
+    overflow: auto;
+}
+
+.ChatFooter{
+	border-top: 1px solid #ccc;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+	padding: 15px;
+}
+
+.sidebar-layout{
+	width: 455px;
+    border-left: 1px solid #ccc;
+}
+
+#chatForm .WriteMsg{
+	border: none;
+	width: 100%;
+}
+
+#chatForm .WriteMsg:focus{
+	outline: none;
+}
+
+.MsgWrap{
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 15px;
+}
+.MsgWrap .Profile{
+	position: relative;
+	margin-right: 10px;
+	height: 40px;
+}
+.MsgWrap .Profile i, .ProfileImage i{
+	width: 40px;
+    height: 40px;
+    background: #d6d4d4;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 22px;
+    border-radius: 50%;    
+}
+.MsgWrap .Profile span, .ProfileImage span {
+    height: 12px;
+    width: 12px;
+    display: block;
+    background: #000;
+    position: absolute;
+    right: 0px;
+    bottom: 0;
+    border-radius: 50%;
+	border: 2px solid #fff;
+}
+.MsgWrap .Profile span.online, .ProfileImage span.online{
+	background-color: green;
+}
+.MsgWrap .Profile span.offline, .ProfileImage span.offline{
+	background-color: gray;
+}
+.MsgWrap .TextMsg h3{
+	font-size: 16px;
+}
+.MsgWrap .TextMsg h3 span{
+	font-size: 12px;
+}
+
+.MsgWrap .TextMsg p{
+	font-size: 14px;
+}
+
+.sidebar-layout .ProfileWrap{
+	display: flex;
+	flex-direction: row;
+	padding: 15px;
+	align-items: center;
+	border-bottom: 1px solid #ccc;
+}
+
+.sidebar-layout .ProfileWrap .ProfileImage{
+	margin-right: 15px;
+	position: relative;
+}
+
+.sidebar-layout .ProfileWrap .ProfileImage i{
+	height: 80px;
+    width: 80px;
+    font-size: 45px;
+    padding: 20px 0;
+}
+.sidebar-layout .ProfileWrap .ProfileImage span{
+	right: 5px;
+    width: 15px;
+    height: 15px;
+}
+
+.sidebar-layout .ProfileContent{
+
+}
+
+.sidebar-layout .ProfileContent h3 {
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.sidebar-layout .ProfileContent h5,.sidebar-layout .ProfileContent p{
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0px;
+}
+
+
+.IncomingCallBox {
+    width: 420px;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background: #d9e7e1;
+    border: 1px solid #82af9c;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.chatFormFooter{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.chatFormFooterLeft{
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.chatFormFooterLeft input {
+    margin-left: -98px;
+    height: 33px;
+}
+.chatFormFooterLeft button.btn {
+    padding: 5px 15px;
+    font-size: 14px;
+}
+
+.chatFormFooterRight{
+	display: flex;
+	flex-direction: row;
+}
+
+.chatFormFooterRight button{
+	border: none;
+	background-color: transparent;
+	font-size: 20px;
+	color: #222;
+}
+
+.chatFormFooterRight a{
+	color: gray;
+	font-size: 20px;
+	margin-right: 5px;
+}
+
+.Sidebarmenu ul {
+    padding: 0;
+    margin: 0;
+}
+.Sidebarmenu ul li {
+    list-style: none;
+}
+.Sidebarmenu ul li a {
+    position: relative;
+    display: block;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+    color: #000;
+	text-decoration: none;
+    font-size: 14px;
+}
+.Sidebarmenu ul li a i {
+    margin-right: 10px;
+}
+.Sidebarmenu ul li a i:last-child {
+    position: absolute;
+    right: 0;
+    top: 50%;
+	font-size: 20px;
+    transform: translate(0, -50%);
+}
+

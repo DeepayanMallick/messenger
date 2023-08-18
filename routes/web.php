@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\VideoChatController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -11,6 +12,8 @@ use App\Models\User;
 | Web Routes
 |--------------------------------------------------------------------------
 */
+
+Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::post('/send-message', [MessageController::class, 'index'])->name('message');
@@ -26,6 +29,6 @@ Route::get('/video-chat', function () {
 });
 
 // Endpoints to call or receive calls.
-Route::post('/video/call-user', 'App\Http\Controllers\VideoChatController@callUser');
-Route::post('/video/accept-call', 'App\Http\Controllers\VideoChatController@acceptCall');
-Auth::routes();
+Route::post('/video/call-user', [VideoChatController::class, 'callUser']);
+Route::post('/video/accept-call', [VideoChatController::class, 'acceptCall']);
+Route::get('/msg-history/{from}/{to}', [HomeController::class, 'msgHistory'])->name('msgHistory');
