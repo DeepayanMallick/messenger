@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\MessageHistory;
 use Illuminate\Http\Request;
 use App\Events\Chat;
+use App\Models\Group;
 use App\Models\GroupConversation;
 use App\Models\GroupMember;
-use App\Models\GroupMessage;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class MessageController extends Controller
 {
-    public function index(Request $request)
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function sendMessage(Request $request)
     {
         if (!auth()) {
             return;
@@ -48,16 +54,32 @@ class MessageController extends Controller
             return;
         }
 
-        $groupConversation = GroupConversation::create([
+        $groupData = [
             'group_id' => $request->input('groupID'),
-            'member_id' => $request->input('memberID'),
+            'user_id' => $request->input('memberID'),
             'message' => $request->input('message'),
-        ]);
+        ];
 
-        event(new Chat($request->input('fromUserID'), $request->input('message')));
-
+        $res = [];
+        $groupConversation = GroupConversation::create($groupData);
+        $dta = $groupConversation->where('group_id', $request->input('groupID'))->get();
+        foreach ($dta as $ky) {
+            $res[] = [
+                'from_user' => $ky->member ? $ky->member->id : '',
+                'from_user_details' => $ky->member ? $ky->member->name : '',
+                'message' => $ky->message,
+                'message_time' => date('h:i A', strtotime($ky->created_at)),
+            ];
+        }
+        broadcast(new Chat($res))->toOthers();
         return true;
     }
+
+    public function createGroupForm(Request $request)
+    {
+        return view('create-group');
+    }
+
 
     public function createGroup(Request $request)
     {
@@ -65,13 +87,27 @@ class MessageController extends Controller
             return;
         }
 
-        $groupMessage = GroupMessage::create([
-            'group_name' => $request->input('groupName'),
+        $groupMessage = Group::create([
+            'group_name' => $request->input('group_name'),
         ]);
 
-        event(new Chat($request->input('fromUserID'), $request->input('message')));
+        if ($groupMessage) {
+            $members = $request->input('groupMembers');
+            $members[] = auth()->user()->id;
+            $groupMembersData = [];
+            foreach ($members as $member) {
+                $groupMembersData[] = [
+                    'group_id' => $groupMessage->id,
+                    'user_id' => $member,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ];
+            }
 
-        return true;
+            GroupMember::insert($groupMembersData);
+        }
+
+        return redirect("/")->with("Group created successfully!");
     }
 
     public function addMember(Request $request)
@@ -87,17 +123,14 @@ class MessageController extends Controller
         foreach ($members as $member) {
             $groupMembersData[] = [
                 'group_id' => $groupID,
-                'member_id' => $member,
+                'user_id' => $member,
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
         }
 
         GroupMember::insert($groupMembersData);
-
-
         event(new Chat($request->input('fromUserID'), $request->input('message')));
-
         return true;
     }
 

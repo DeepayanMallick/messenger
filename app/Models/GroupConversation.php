@@ -11,17 +11,12 @@ class GroupConversation extends Model
 
     protected $fillable = [
         'group_id',
-        'member_id',
+        'user_id',
         'message',
     ];
 
-    public function GroupMessage()
-    {
-        return $this->belongsTo(GroupMessage::class, 'group_id');
-    }
-
     public function member()
     {
-        return $this->belongsTo(User::class, 'member_id');
+        return $this->belongsTo(User::class, 'id');
     }
 }

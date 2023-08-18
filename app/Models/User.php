@@ -30,11 +30,11 @@ class User extends Authenticatable
 
     public function groupConversations()
     {
-        return $this->hasMany(GroupConversation::class, 'member_id');
+        return $this->hasMany(GroupConversation::class, 'user_id');
     }
 
     public function groups()
     {
-        return $this->belongsToMany(GroupMessage::class, 'group_members', 'member_id', 'group_id');
+        return $this->belongsToMany(Group::class, 'group_members', 'user_id', 'group_id');
     }
 }

@@ -14,21 +14,25 @@ use App\Models\User;
 */
 
 Auth::routes();
+Route::middleware(['auth'])->group(function () {
+    // Routes that require authentication
+    Route::get('/', [HomeController::class, 'index'])->name('index');
+    Route::post('/send-message', [MessageController::class, 'sendMessage'])->name('message');
+    Route::post('/send-group-message', [MessageController::class, 'sendGroupMessage'])->name('group-message');
+    Route::get('/create-group', [MessageController::class, 'createGroupForm'])->name('create-group-form');
+    Route::post('/create-group', [MessageController::class, 'createGroup'])->name('create-group');
+    Route::post('/add-member', [MessageController::class, 'addMember'])->name('add-member');
+    Route::post('/upload', [MessageController::class, 'upload'])->name('upload-file');
 
-Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::post('/send-message', [MessageController::class, 'index'])->name('message');
-Route::post('/send-group-message', [MessageController::class, 'sendGroupMessage'])->name('group-message');
-Route::post('/create-group', [MessageController::class, 'createGroup'])->name('create-group');
-Route::post('/add-member', [MessageController::class, 'addMember'])->name('add-member');
-Route::post('/upload', [MessageController::class, 'upload'])->name('upload-file');
+    Route::get('/video-chat', function () {
+        // fetch all users apart from the authenticated user
+        $users = User::where('id', '<>', Auth::id())->get();
+        return view('video-chat', ['users' => $users]);
+    });
 
-Route::get('/video-chat', function () {
-    // fetch all users apart from the authenticated user
-    $users = User::where('id', '<>', Auth::id())->get();
-    return view('video-chat', ['users' => $users]);
+    // Endpoints to call or receive calls.
+    Route::post('/video/call-user', [VideoChatController::class, 'callUser']);
+    Route::post('/video/accept-call', [VideoChatController::class, 'acceptCall']);
+    Route::get('/msg-history/{from}/{to}', [HomeController::class, 'msgHistory'])->name('msgHistory');
+    Route::get('/group-msg-history/{group_id}', [HomeController::class, 'groupMsgHistory'])->name('groupMsgHistory');
 });
-
-// Endpoints to call or receive calls.
-Route::post('/video/call-user', [VideoChatController::class, 'callUser']);
-Route::post('/video/accept-call', [VideoChatController::class, 'acceptCall']);
-Route::get('/msg-history/{from}/{to}', [HomeController::class, 'msgHistory'])->name('msgHistory');

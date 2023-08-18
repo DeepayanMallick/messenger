@@ -28,7 +28,7 @@ if (formElement != undefined && formElement != null) {
 				userName = res.userName;
 			}
 
-			messageOutput.innerHTML += '<div><strong class="username">' + userName + ' : </strong><span>' + window.emoji.replace_colons(res.message) + '</span></div>';
+			messageOutput.innerHTML += `<div><strong class="username">${userName}: </strong><span>${window.emoji.replace_colons(res.message)}</span></div>`;
 		});
 
 		messageElement.value = "";
@@ -60,7 +60,7 @@ if (uploadButton != undefined && uploadButton != null) {
 						method: 'post',
 						url: '/send-message',
 						data: {
-							message: '<a target="_blank" href="' + response.data.url + '"><img width="100" src="/storage/uploads/free-thumb.png"></a><br><span>' + response.data.message + '</span>',
+							message: `<a target="_blank" href="${response.data.url}"><img width="100" src="/storage/uploads/free-thumb.png"></a><br><span>${response.data.message}</span>`,
 							fromUserID: fromUserID,
 							toUserID: toUserID,
 						}
@@ -70,7 +70,7 @@ if (uploadButton != undefined && uploadButton != null) {
 						if (res.userName != null && res.userName != "") {
 							userName = res.userName;
 						}
-						messageOutput.innerHTML += '<div><strong class="username">' + userName + ' : </strong><span>' + window.emoji.replace_colons(res.message) + '</span></div>';
+						messageOutput.innerHTML += `<div><strong class="username">${userName}: </strong><span>${window.emoji.replace_colons(res.message)}</span></div>`;
 					});
 					messageElement.value = "";
 				})

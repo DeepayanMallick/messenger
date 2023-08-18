@@ -9,6 +9,11 @@ use App\Events\StartVideoChat;
 class VideoChatController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function callUser(Request $request)
     {
         $data['userToCall'] = $request->user_to_call;

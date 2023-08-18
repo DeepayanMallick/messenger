@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
+use App\Models\GroupConversation;
 use App\Models\MessageHistory;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
-
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index()
     {
-        $users = User::where('id', '<>', Auth::id())->get();
-        return view('home', ['users' => $users]);
+        $data['users'] = User::where('id', '<>', Auth::id())->get();
+        $data['groups'] = Group::get();
+        return view('home', $data);
     }
     public function msgHistory($from, $to)
     {
@@ -33,6 +34,22 @@ class HomeController extends Controller
                 'from_user_details' => $frm,
                 'to_user' => $ky->to_user,
                 'to_user_details' => $tom,
+                'message' => $ky->message,
+                'message_time' => date('h:i A', strtotime($ky->created_at)),
+            ];
+        }
+        return response()->json(['data' => $res], 200);
+    }
+
+    public function groupMsgHistory($group_id)
+    {
+        $dta = GroupConversation::where('group_id', $group_id)->get();
+        $res = [];
+        foreach ($dta as $ky) {
+            $from_user = User::where('id', $ky->user_id)->first();
+            $res[] = [
+                'from_user' => $from_user->id,
+                'from_user_details' => $from_user->name,
                 'message' => $ky->message,
                 'message_time' => date('h:i A', strtotime($ky->created_at)),
             ];
